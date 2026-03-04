@@ -2,8 +2,8 @@ name: Knightbot CI/CD
 
 on:
   schedule:
-    - cron: "0 */5 * * *"  # redéploie toutes les 5 h
-  workflow_dispatch:       # possibilité de lancer manuellement
+    - cron: "0 */5 * * *"
+  workflow_dispatch:
 
 jobs:
   run-bot:
@@ -11,16 +11,16 @@ jobs:
     timeout-minutes: 350
 
     steps:
-      - name: 📥 Checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: 🟢 Setup Node
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
-      - name: 📦 Install dependencies
+      - name: Install dependencies
         run: npm install
 
-      - name: 🚀 Start Knightbot
+      - name: Start bot
         run: node index.js
