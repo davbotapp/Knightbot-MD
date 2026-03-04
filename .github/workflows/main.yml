@@ -1,14 +1,11 @@
-name: Knightbot CI/CD
+name: Knightbot Single Run
 
 on:
-  schedule:
-    - cron: "0 */5 * * *"
-  workflow_dispatch:
+  workflow_dispatch: # Permet de lancer manuellement depuis l'onglet Actions
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
-    timeout-minutes: 350
 
     steps:
       - name: Checkout repository
@@ -25,5 +22,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Start bot
+      - name: Start Knightbot
         run: node index.js
